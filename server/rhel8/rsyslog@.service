@@ -1,0 +1,19 @@
+[Unit]
+Description=System Logging Service
+Wants=network.target network-online.target
+After=network.target network-online.target
+Documentation=man:rsyslogd(8)
+Documentation=https://www.rsyslog.com/doc/
+
+[Service]
+Type=notify
+ExecStart=/usr/sbin/rsyslogd -n -i NONE -f /data/server/rhel8/%i.conf
+UMask=0066
+Restart=on-failure
+
+# Increase the default a bit in order to allow many simultaneous
+# files to be monitored, we might need a lot of fds.
+LimitNOFILE=16384
+
+[Install]
+WantedBy=multi-user.target

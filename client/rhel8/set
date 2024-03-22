@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ ! -e "$1" ] ; then
+    echo "Usage: $(basename $0) <conf-file>"
+    exit !
+fi
+
+CONF=/etc/rsyslog.d/remote.conf
+
+[ -e $CONF ] && rm -f $CONF
+ln -s $(realpath $1) $CONF

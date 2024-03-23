@@ -1,0 +1,7 @@
+global(
+    DefaultNetstreamDriverCAFile="/data/certs/pki/ca.crt"
+)
+action(type="omfwd" target="10.0.5.15" port="6514" protocol="tcp"
+       streamdriver="ossl" streamdrivermode="1"
+       streamdriverauthmode="x509/name"
+       streamdriverpermittedpeers="syslog")

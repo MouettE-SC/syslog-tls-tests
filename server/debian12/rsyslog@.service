@@ -1,0 +1,17 @@
+[Unit]
+Description=System Logging Service
+Documentation=man:rsyslogd(8)
+Documentation=man:rsyslog.conf(5)
+Documentation=https://www.rsyslog.com/doc/
+
+[Service]
+Type=notify
+ExecStart=/usr/sbin/rsyslogd -n -i NONE -f /data/server/debian12/%i.conf
+Restart=on-failure
+
+# Increase the default a bit in order to allow many simultaneous
+# files to be monitored, we might need a lot of fds.
+LimitNOFILE=16384
+
+[Install]
+WantedBy=multi-user.target

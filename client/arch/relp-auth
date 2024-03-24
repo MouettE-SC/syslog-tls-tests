@@ -1,0 +1,7 @@
+module(load="omrelp" tls.tlslib="openssl")
+action(type="omrelp" target="10.0.5.16" port="10514"
+       tls="on" tls.authmode="name" tls.permittedpeer="syslog"
+       tls.cacert="/data/certs/pki/ca.crt"
+       tls.mycert="/data/certs/pki/client.crt"
+       tls.myprivkey="/data/certs/pki/client.key"
+      )

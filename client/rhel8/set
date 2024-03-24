@@ -9,3 +9,4 @@ CONF=/etc/rsyslog.d/remote.conf
 
 [ -e $CONF ] && rm -f $CONF
 ln -s $(realpath $1) $CONF
+systemctl restart rsyslog
